@@ -49,11 +49,17 @@ class AppTest {
             }
         }
         multiplyInteger(6, 1, 2);
-        assertEquals(resultTable1, resultTableInt);
+        assertEquals(resultTable1, resultTableInt, "failed ");
         logger.warn("testMultiplyInt+");
 
     }
+    @Test
+    void testMultiplyIntMul() {
+        assertEquals(6, App.multiplyLong(3, 2, 3),"testMultiplyIntMul" );
+        logger.warn("testMultiplyNotInt+");
 
+
+    }
     @Test
     void testMultiplyNotInt() {
         assertNotEquals(10, App.multiplyLong(2, 2, 3));
