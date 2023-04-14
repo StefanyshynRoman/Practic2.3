@@ -21,13 +21,14 @@ class AppTest {
 
     @Test
     void testMultiplyLong() {
-        multiplyLong(4L, 1L, 2L);
+        multiplyLong(5L, 1L, 2L);
         ArrayList<BigDecimal> resultTable1 = new ArrayList<>();
+        resultTable1.add(BigDecimal.valueOf(4));
         resultTable1.add(BigDecimal.valueOf(1));
         resultTable1.add(BigDecimal.valueOf(3));
         resultTable1.add(BigDecimal.valueOf(3));
         resultTable1.add(BigDecimal.valueOf(9));
-        assertEquals(resultTable1, resultTableLong);
+        assertEquals(resultTable1, resultTableLong,"long failed");
         logger.warn("testMultiplyInt+");
 
     }
