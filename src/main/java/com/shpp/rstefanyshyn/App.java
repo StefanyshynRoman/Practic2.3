@@ -1,6 +1,7 @@
 package com.shpp.rstefanyshyn;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import org.slf4j.Logger;
@@ -9,24 +10,19 @@ import org.slf4j.LoggerFactory;
 
 public class App {
     static String fileNameProperties = "config.properties";
-    static String fileNameProperties1 = "config.properties1";
-    static String fileNameProperties3 = "config.properties1";
-    static String fileNameProperties2 = "config.properties1";
-
-    static String fileNameProperties5 = "config.properties1";
-    static String fileNameProperties6 = "config.properties1";
-    static String fileNameProperties7 = "config.properties1";
 
 
 
-    static String min,max,inc;
-//    static String max;
-//    static String inc;
+    static String min;
+    static String max;
+    static String inc;
     static String sysTurn;
     static ArrayList<BigDecimal> resultTableLong = new ArrayList<>();
     static ArrayList<BigDecimal> resultTableInt = new ArrayList<>();
     static ArrayList<BigDecimal> resultTableDouble = new ArrayList<>();
+
     private static final Logger logger = LoggerFactory.getLogger(App.class);
+    static Logger logger1 =LoggerFactory.getLogger("log1");
     private static BigDecimal mul;
 /*
 gfgdfgdg
@@ -38,11 +34,8 @@ gfgdfgdg
         min = property.getValueFromProperty("min");
         inc = property.getValueFromProperty("inc");
         logger.warn(" Minimum=" + min + " Maximum=" + max + " Step=" + inc);
-        try {
-            sysTurn = System.getProperty("type").toLowerCase();
-        } catch (NullPointerException e) {
-            sysTurn = "int";
-        }
+            sysTurn = System.getProperty("type","int").toLowerCase();
+
         try {
             switch (sysTurn) {
                 case "int": {
@@ -73,7 +66,7 @@ gfgdfgdg
             }
 
         } catch (NumberFormatException e) {
-            logger.error("One value is not Integer");
+            logger.error("One or more  value is wrong",e);
             System.exit(1);
             throw new RuntimeException(e);
         }
@@ -85,7 +78,7 @@ gfgdfgdg
         for (long i = minimum; i < maximum; i += increment) {
             for (long j = minimum; j < maximum; j += increment) {
                 mul = BigDecimal.valueOf(i * j);
-                logger.info(i + "x" + j + "= " + mul);
+                logger1.info(i + "x" + j + "= " + mul);
                 resultTableLong.add(mul);
             }
         }
@@ -97,19 +90,24 @@ gfgdfgdg
         for (double i = minimum; i < maximum; i += increment) {
             for (double j = minimum; j < maximum; j += increment) {
                 mul = BigDecimal.valueOf(i * j);
-                logger.info(i + "x" + j + "= " + mul);
+          String pattern="#.##";
+                String iValue= new DecimalFormat(pattern).format(i);
+                String jValue=new  DecimalFormat(pattern).format(j);
+                String mulValue= new  DecimalFormat(pattern).format(mul);
+                String mul2;
+                logger1.info(iValue+ "x" +jValue + "= " + mulValue);
                 resultTableDouble.add(mul);
             }
         }
         return maximum*minimum;
     }
 
-    public static Integer multiplyInteger(int maximum, int minimum, int increment) {
+    public static int multiplyInteger(int maximum, int minimum, int increment) {
         logger.warn("________Integer________");
         for (int i = minimum; i < maximum; i += increment) {
             for (int j = minimum; j < maximum; j += increment) {
                 mul = BigDecimal.valueOf((long) i * j);
-                logger.info(i + "x" + j + "= " + mul);
+                logger1.info(i + "x" + j + "= " + mul);
                 resultTableInt.add(mul);
             }
         }
