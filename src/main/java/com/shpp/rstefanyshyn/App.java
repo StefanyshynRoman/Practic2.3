@@ -24,9 +24,7 @@ public class App {
     private static final Logger logger = LoggerFactory.getLogger(App.class);
     static Logger logger1 =LoggerFactory.getLogger("log1");
     private static BigDecimal mul;
-/*
-gfgdfgdg
- */
+
     public static void main(String[] args) {
         GetProperty property = new GetProperty(fileNameProperties);
 
@@ -68,7 +66,6 @@ gfgdfgdg
         } catch (NumberFormatException e) {
             logger.error("One or more  value is wrong",e);
             System.exit(1);
-            throw new RuntimeException(e);
         }
         logger.warn("______The_End____");
     }
@@ -94,10 +91,10 @@ gfgdfgdg
                 String iValue= new DecimalFormat(pattern).format(i);
                 String jValue=new  DecimalFormat(pattern).format(j);
                 String mulValue= new  DecimalFormat(pattern).format(mul);
-                String mul2;
                 logger1.info(iValue+ "x" +jValue + "= " + mulValue);
                 resultTableDouble.add(mul);
             }
+
         }
         return maximum*minimum;
     }
