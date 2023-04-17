@@ -5,13 +5,13 @@
     <appender name="PRINT"
               class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%blue(%msg) %n</pattern>
+            <pattern>%(%msg) %n</pattern>
         </encoder>
     </appender>
     <appender name="PRINT1"
               class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%green(%msg) %n</pattern>
+            <pattern>%(%msg) %n</pattern>
         </encoder>
     </appender>
     <appender name="STDOUT"
