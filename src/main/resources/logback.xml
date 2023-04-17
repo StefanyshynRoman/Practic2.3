@@ -8,7 +8,12 @@
             <pattern>%blue(%msg) %n</pattern>
         </encoder>
     </appender>
-
+    <appender name="PRINT1"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%green(%msg) %n</pattern>
+        </encoder>
+    </appender>
     <appender name="STDOUT"
               class="ch.qos.logback.core.ConsoleAppender">
 
@@ -21,13 +26,11 @@
     <logger name="log1" level="INFO" additivity="false">
         <appender-ref ref="PRINT"/>
     </logger>
-
+    <logger name="log2" level="INFO" additivity="false">
+        <appender-ref ref="PRINT1"/>
+    </logger>
     <root level="debug">
         <appender-ref ref="STDOUT"/>
-<!--        <appender-ref ref="log1" />-->
     </root>
-<!--    <root level="info">-->
-<!--        <appender-ref ref="PRINT"/>-->
 
-<!--    </root>-->
 </configuration>

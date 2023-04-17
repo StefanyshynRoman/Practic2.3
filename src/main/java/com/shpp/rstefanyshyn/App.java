@@ -23,6 +23,7 @@ public class App {
 
     private static final Logger logger = LoggerFactory.getLogger(App.class);
     static Logger logger1 =LoggerFactory.getLogger("log1");
+    static Logger logger2 =LoggerFactory.getLogger("log2");
     private static BigDecimal mul;
 
     public static void main(String[] args) {
@@ -32,7 +33,7 @@ public class App {
         min = property.getValueFromProperty("min");
         inc = property.getValueFromProperty("inc");
         logger.warn(" Minimum=" + min + " Maximum=" + max + " Step=" + inc);
-            sysTurn = System.getProperty("type","int").toLowerCase();
+            sysTurn = System.getProperty("type","double").toLowerCase();
 
         try {
             switch (sysTurn) {
@@ -85,6 +86,8 @@ public class App {
     public static double multiplyDouble(double maximum, double minimum, double increment) {
         logger.warn("________Double________");
         for (double i = minimum; i < maximum; i += increment) {
+            logger2.info("________Multiply "+i+" _____________ " );
+
             for (double j = minimum; j < maximum; j += increment) {
                 mul = BigDecimal.valueOf(i * j);
           String pattern="#.##";
